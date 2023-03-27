@@ -1,0 +1,109 @@
+<%-include ../partials/header.ejs%>
+<%-include ../partials/main_nav.ejs%>
+<!--Content for the Add Page-->
+<div class="container">
+    <div class="row">
+        <div class="offset-md-3 col-md-6">
+        
+        <h1><%=title%></h1>
+            <form class="form" method="POST">
+                <div class="form group">
+                    <label for="nameTextField">Tournament Name</label>
+                    <input type="text" class="form control"
+                    id="nameTextField"
+                    placeholder = "Enter the Tournament Name"
+                    name="name" required>
+                </div>                    
+
+                    <div class="form group">
+                    <label for="descriptionTextArea">Description</label>
+                    <textarea type="text" class="form control"
+                    id="descriptionTextArea"
+                    placeholder = "Enter a brief description of the tournament"
+                    name="description" required></textarea>
+                    </div>
+                    <div class="form group">                    
+                        <label for="nameTextField">Tournament Status</label>
+                        <select name="status" id="status">
+                            <option value="active" >active</option>
+                            <option value="inactive" >inactive</option>
+                        </select>                    
+                    </div>
+                    <div class="form group">
+                        
+                        <input type="hidden" class="form control"
+                        id="userID"                        
+                        name="userID" value="<%=user[0]._id%>" required>
+                    </div>
+
+                    <div class="form group">
+                        <label for="nameTextField">Player1:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player1 Name"
+                        name="player1" >
+                    </div> 
+                    <div class="form group">
+                        <label for="nameTextField">Player2:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player2 Name"
+                        name="player2" >
+                    </div>
+                    <div class="form group">
+                        <label for="nameTextField">Player3:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player3 Name"
+                        name="player3" >
+                    </div>
+                    <div class="form group">
+                        <label for="nameTextField">Player4:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player4 Name"
+                        name="player4" >
+                    </div>
+                    <div class="form group">
+                        <label for="nameTextField">Player5:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player5 Name"
+                        name="player5" >
+                    </div>
+                    <div class="form group">
+                        <label for="nameTextField">Player6:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player6 Name"
+                        name="player6" >
+                    </div>
+                    <div class="form group">
+                        <label for="nameTextField">Player7:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player7 Name"
+                        name="player7" >
+                    </div>
+                    <div class="form group">
+                        <label for="nameTextField">Player8:</label>
+                        <input type="text" class="form control"
+                        id="nameTextField"
+                        placeholder = "Enter the Player8 Name"
+                        name="player8" >
+                    </div>
+                    
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i>submit</button>
+                    <a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>cancel</a>
+
+                    
+
+                </form>
+        </div>
+        </div>
+    </div>
+
+
+ <%-include ../partials/bottom_nav.ejs%>
+ <%-include ../partials/footer.ejs%>
+

@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="offset-md-3 col-md-6">
+            
         <h1><%=title%></h1>
             <form class="form" method="POST">
                 <div class="form group">
@@ -36,56 +37,56 @@
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player1 Name"
-                    name="player1" >
+                    name="player1" value = <%=playernames[0]%> required>
                 </div> 
                 <div class="form group">
                     <label for="nameTextField">Player2:</label>
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player2 Name"
-                    name="player2" >
+                    name="player2" value = <%=playernames[1]%> required>
                 </div>
                 <div class="form group">
                     <label for="nameTextField">Player3:</label>
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player3 Name"
-                    name="player3" >
+                    name="player3" value = <%=playernames[2]%> required>
                 </div>
                 <div class="form group">
                     <label for="nameTextField">Player4:</label>
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player4 Name"
-                    name="player4" >
+                    name="player4" value = <%=playernames[3]%> required>
                 </div>
                 <div class="form group">
                     <label for="nameTextField">Player5:</label>
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player5 Name"
-                    name="player5" >
+                    name="player5" value = <%=playernames[4]%> required>
                 </div>
                 <div class="form group">
                     <label for="nameTextField">Player6:</label>
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player6 Name"
-                    name="player6" >
+                    name="player6" value = <%=playernames[5]%> required>
                 </div>
                 <div class="form group">
                     <label for="nameTextField">Player7:</label>
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player7 Name"
-                    name="player7" >
+                    name="player7" value = <%=playernames[6]%> required>
                 </div>
                 <div class="form group">
                     <label for="nameTextField">Player8:</label>
                     <input type="text" class="form control"
                     id="nameTextField"
                     placeholder = "Enter the Player8 Name"
-                    name="player8" >
+                    name="player8" value = <%=playernames[7]%> required>
                 </div>
                     <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i>submit</button>
                     <a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>cancel</a>

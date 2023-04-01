@@ -8,12 +8,22 @@
         Tournament name:&emsp;<%=tournament.name%>
         <br>
         Descriptions:&emsp;<%=tournament.description%>
+        <br>
+        <% if(tournament.round == 4) {%>
+            The tournament is completed!
+        <%} else {%>
+            The tournament is currently in round:&emsp;<%=tournament.round%>
+        <%}%>
 
         <% if(players.length > 0) {%>
             <h3>Players in quarter finals:</h3>
             <ul>
             <% for(let i=0; i<players.length; i++) { %>
-                <li>Position <%= i+1 %>:&emsp;<%= players[i].playername %></li>
+                <li>Position <%= i+1 %>:&emsp;<%= players[i].playername %>
+                <% if (tournament.round == 1) {%>
+                    <td class="text-center col-1"><a href="" class="btn btn-primary">Promote</a></td>
+                <%}%>
+                </li>
             <% } %>
             </ul>
         <% } else { %>

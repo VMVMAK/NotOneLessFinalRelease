@@ -8,6 +8,12 @@
         Tournament name:&emsp;<%=tournament.name%>
         <br>
         Descriptions:&emsp;<%=tournament.description%>
+        <br>
+        <% if(tournament.round == 4) {%>
+            The tournament is completed!
+        <%} else {%>
+            The tournament is currently in round:&emsp;<%=tournament.round%>
+        <%}%>
 
         <% if(players.length > 0) {%>
             <h3>The Winner is:</h3>

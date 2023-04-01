@@ -183,3 +183,96 @@ module.exports.displayDetailsPage = (req, res, next) => {
         }
     });
 }
+
+module.exports.displayDetailsPageTwo = (req, res, next) => {
+    let id = req.params.id;
+    Tournament.findById(id, (err, tournamentToEdit) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        }
+        else {
+            if (tournamentToEdit.round < 2) {
+                res.render('tournament/return', {title: 'Tournament Details'});
+            } 
+            else {
+                Player.find({tournamentID: id, round1Winner: true}).sort({position:1}).exec((err, players) => {
+                    if (err) {
+                        console.log(err);
+                        res.end(err);
+                    }   
+                    else {
+                        res.render('tournament/details2', 
+                            { title: 'Tournament Details', 
+                            tournament: tournamentToEdit, 
+                            displayName:req.user?req.user.displayName:'',
+                            players: players
+                        });
+                    }
+                })
+            }  
+        }
+    });
+}
+
+module.exports.displayDetailsPageThree = (req, res, next) => {
+    let id = req.params.id;
+    Tournament.findById(id, (err, tournamentToEdit) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        }
+        else {
+            if (tournamentToEdit.round < 3) {
+                res.render('tournament/return', {title: 'Tournament Details'});
+            } 
+            else {
+                Player.find({tournamentID: id, round1Winner: true, round2Winner: true}).sort({position:1}).exec((err, players) => {
+                    if (err) {
+                        console.log(err);
+                        res.end(err);
+                    }   
+                    else {
+                        res.render('tournament/details3', 
+                            { title: 'Tournament Details', 
+                            tournament: tournamentToEdit, 
+                            displayName:req.user?req.user.displayName:'',
+                            players: players
+                        });
+                    }
+                })
+            }
+        }
+    });
+}
+
+module.exports.displayDetailsFinal = (req, res, next) => {
+    let id = req.params.id;
+    Tournament.findById(id, (err, tournamentToEdit) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        }
+        else {
+            if (tournamentToEdit.round < 4) {
+                res.render('tournament/return', {title: 'Tournament Details'});
+            } 
+            else {
+                Player.find({tournamentID: id, round1Winner: true, round2Winner: true, round3Winner: true}).sort({position:1}).exec((err, players) => {
+                    if (err) {
+                        console.log(err);
+                        res.end(err);
+                    }   
+                    else {
+                        res.render('tournament/details4', 
+                            { title: 'Tournament Details', 
+                            tournament: tournamentToEdit, 
+                            displayName:req.user?req.user.displayName:'',
+                            players: players
+                        });
+                    }
+                })
+            }
+        }
+    });
+}

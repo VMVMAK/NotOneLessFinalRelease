@@ -17,8 +17,7 @@ module.exports.displayTournamentList = (req, res, next) => {
         else {
             if (req.user!=undefined){
                 User.find({ displayName: req.user.displayName }).exec((err, user) => {
-                    if (err) return handleError(err); 
-                    console.log('displayTournamentList user:'+user);
+                    if (err) return handleError(err);                     
                     res.render('tournament/list', { title: 'Tournaments', TournamentList: tournamentList, user: user, displayName:req.user?req.user.displayName:'' });
                 });
             }else{
@@ -136,7 +135,58 @@ module.exports.processEditPage = (req, res, next) => {
         }
     });
 }
+module.exports.processPlayerPromo = (req, res, next) => {
+    let id = req.params.id;
+    let playerID = req.params.pid;
+    let round = req.params.round;
+    
+    let updatedPlayer = Player({
+        "_id": playerID,
+        ["round"+round+"Winner"] : true
+        
+    });
+    
+    Player.updateOne({ _id: playerID }, updatedPlayer, (err) => {
+        if (err) {
+            console.log(err);
+            res.end(err);
+        } else {
+            // check if round is finished           
+            Player.find({tournamentID: id, ["round"+round+"Winner"]: true}).sort({position:1}).exec((err, players) => {
+                if (err) {
+                    console.log(err);
+                    res.end(err);
+                } else {             
+                    
+                    let updatedTournament = Tournament({
+                        "_id": id,
+                        "round": Number(round)+1     
+                    });
+                    
+                    if ((round==1 && players.length==4) || (round==2 && players.length==2) || (round==3 && players.length==1)){
+                        
+                        Tournament.updateOne({ _id: id }, updatedTournament, (err) => {
+                            if (err) {
+                                console.log(err);
+                                res.end(err);
+                            } else {                               
+                               res.redirect('/tournamentList/details/'+(Number(round)+1)+'/'+id);                               
+                            }
+                        });                 
+                    }else{                        
+                        res.redirect('/tournamentList/details/'+round+'/'+id);
+                    }
+                    
+                }
+            });
+            
+           
+        }
+    });
 
+    
+
+}
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
     Tournament.remove({ _id: id }, (err) => {
@@ -160,18 +210,27 @@ module.exports.performDelete = (req, res, next) => {
 
 module.exports.displayDetailsPage = (req, res, next) => {
     let id = req.params.id;
+    let round = req.params.round;
     Tournament.findById(id, (err, tournamentToEdit) => {
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
-            Player.find({tournamentID: id}).sort({position:1}).exec((err, players) => {
+            let query;
+            if (round==1){
+                query={tournamentID: id};
+            }else{
+                query={tournamentID: id, ["round"+(round-1)+"Winner"]: true};
+            }
+            
+            Player.find(query).sort({position:1}).exec((err, players) => {
                 if (err) {
                     console.log(err);
                     res.end(err);
                 }   
                 else {
+                    
                     res.render('tournament/details', 
                         { title: 'Tournament Details', 
                         tournament: tournamentToEdit, 
@@ -184,6 +243,7 @@ module.exports.displayDetailsPage = (req, res, next) => {
     });
 }
 
+/*
 module.exports.displayDetailsPageTwo = (req, res, next) => {
     let id = req.params.id;
     Tournament.findById(id, (err, tournamentToEdit) => {
@@ -276,3 +336,4 @@ module.exports.displayDetailsFinal = (req, res, next) => {
         }
     });
 }
+*/

@@ -13,7 +13,7 @@ let flash = require('connect-flash');
 let mongoose = require('mongoose');
 let DB = require('./db');
 //point mongoose to the DB URI
-mongoose.connect(DB.RemoteURI || DB.URI, {useNewUrlParser:true, useUnifiedtopology:true});
+mongoose.connect((DB.RemoteURI || DB.URI), {useNewUrlParser:true, useUnifiedtopology:true});
 let mongoDB = mongoose.connection;
 mongoDB.on('error', console.error.bind(console, 'Connection Error:'));
 mongoDB.once('open', () => {

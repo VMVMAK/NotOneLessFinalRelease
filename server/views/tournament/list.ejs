@@ -17,6 +17,7 @@
               <%//if(typeof displayName =='string'&&displayName){%>
                 <th class="text-center col-2">Name</th>
                 <th class="col-6">Description</th>
+                <th class="text-center col-1">Round</th>
                 <th class="text-center col-1">Status</th>
                 <th class="text-center col-1">Details</th>
                 <th class="text-center col-1"></th>
@@ -34,8 +35,9 @@
                           //if (TournamentList[count].userID == user[0]._id) {%>
                         <td class="text-center col-2"><%=TournamentList[count].name%></td>
                         <td class="col-6"><%=TournamentList[count].description%></td>
-                        <th class="text-center col-1"><%=TournamentList[count].status%></th>
-                        <td class="text-center col-1"><a href="/tournamentList/details/1/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Details</a></td>
+                        <td class="text-center col-1"><%=TournamentList[count].round == 1?'Quarter final':TournamentList[count].round == 2?'Semi-final':TournamentList[count].round == 3?'Final':'End'%></td>
+                        <td class="text-center col-1"><%=TournamentList[count].status%></td>
+                        <td class="text-center col-1"><a href="/tournamentList/details/<%=TournamentList[count].round%>/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Details</a></td>
                    
                         <td class="text-center col-1"><a href="/tournamentList/edit/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i>Edit</a></td>
                         <td class="text-center col-1"><a href="/tournamentList/delete/<%=TournamentList[count]._id%>" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a></td>

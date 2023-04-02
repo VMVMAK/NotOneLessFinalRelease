@@ -39,15 +39,20 @@ router.post('/edit/:id', tournamentController.processEditPage);
 router.get('/delete/:id', tournamentController.performDelete);
 
 /*GET Route for displaying the Details page - UPDATE operation*/
-router.get('/details/1/:id/', tournamentController.displayDetailsPage);
+router.get('/details/:round/:id/', tournamentController.displayDetailsPage);
 
 /*GET Route for displaying the Details page - UPDATE operation*/
-router.get('/details/2/:id/', tournamentController.displayDetailsPageTwo);
+//router.get('/details/2/:id/', tournamentController.displayDetailsPageTwo);
 
 /*GET Route for displaying the Details page - UPDATE operation*/
-router.get('/details/3/:id/', tournamentController.displayDetailsPageThree);
+//router.get('/details/3/:id/', tournamentController.displayDetailsPageThree);
 
 /*GET Route for displaying the Details page - UPDATE operation*/
-router.get('/details/4/:id/', tournamentController.displayDetailsFinal);
+//router.get('/details/4/:id/', tournamentController.displayDetailsFinal);
+
+/*POST Route for processing the Edit page - UPDATE Operation*/
+//router.post('/edit/:id', requireAuth,tournamentController.processEditPage);
+router.get('/details/Promo/:round/:id/:pid', tournamentController.processPlayerPromo);
+
 
 module.exports = router;

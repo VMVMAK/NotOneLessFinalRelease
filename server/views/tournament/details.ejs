@@ -9,30 +9,45 @@
         <br>
         Descriptions:&emsp;<%=tournament.description%>
         <br>
+        Status:&emsp;<%=tournament.status.toUpperCase()%>
+        <br>
         <% if(tournament.round == 4) {%>
             The tournament is completed!
         <%} else {%>
             The tournament is currently in round:&emsp;<%=tournament.round%>
         <%}%>
 
-        <% if(players.length > 0) {%>
-            <h3>Players in quarter finals:</h3>
-            <ul>
-            <% for(let i=0; i<players.length; i++) { %>
-                <li>Position <%= i+1 %>:&emsp;<%= players[i].playername %>
-                <% if (tournament.round == 1) {%>
-                    <td class="text-center col-1"><a href="" class="btn btn-primary">Promote</a></td>
-                <%}%>
-                </li>
+        <%  if(tournament.status=='active'){
+                let numOfWinner=0;
+                let roundWinner='round'+tournament.round+'Winner';
+                if(players.length > 0) {%>
+                <h3><%=tournament.round == 1?'Players in quarter finals':tournament.round == 2?'Players in semi-final':tournament.round == 3?'Players in final round':'The Winner is:'%></h3>
+                <ul>
+                <% let isFinishMatch;                
+                    for(let i=0; i<players.length; i++) { %>
+                    <li>Position <%= i+1 %>:&emsp;<%= players[i].playername %> 
+                    <%if (players[i][roundWinner]) {numOfWinner++;%>WON<%}%>
+                    <% if (tournament.round != 4) {%>
+                        <% if (i%2 == 0){                        
+                            if (players[i][roundWinner] || players[i+1][roundWinner]){
+                                // not finish match
+                                isFinishMatch = true;
+                            }else{isFinishMatch = false;}
+                        }%>
+                        <%if (!(isFinishMatch)){%>
+                        <a href="/tournamentList/details/Promo/<%=tournament.round%>/<%=tournament._id%>/<%=players[i].id%>" class="btn btn-primary">Promote</a>
+                        <%}%>
+                    <%}%>
+                    </li>
+                <% } %>
+                </ul>
+            <% } else { %>
+                <p>No players found for this tournament.</p>
             <% } %>
-            </ul>
-        <% } else { %>
-            <p>No players found for this tournament.</p>
-        <% } %>
-
-
+            <br><br><%if ((tournament.round==1 && numOfWinner==4) || (tournament.round==2 && numOfWinner==2) || (tournament.round==3 && numOfWinner==1)){%><a href="/tournamentList/details/<%=(tournament.round+1)%>/<%=tournament._id%>" class="btn btn-primary">Next Round<i class="fas fa-chevron-right"></i><%}%></a>
+        <% } %>        
+        
         <br><a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>Back</a>
-        <br><br><a href="/tournamentList/details/2/<%=tournament._id%>" class="btn btn-primary">Next Round<i class="fas fa-chevron-right"></i></a>
            </div>
         </div>
     </div>

@@ -35,7 +35,7 @@
                           //if (TournamentList[count].userID == user[0]._id) {%>
                         <td class="text-center col-2"><%=TournamentList[count].name%></td>
                         <td class="col-6"><%=TournamentList[count].description%></td>
-                        <td class="text-center col-1"><%=TournamentList[count].round == 1?'Quarter final':TournamentList[count].round == 2?'Semi-final':TournamentList[count].round == 3?'Final':'End'%></td>
+                        <td class="text-center col-1"><%=TournamentList[count].round == 1?'Quarter final':TournamentList[count].round == 2?'Semi-final':TournamentList[count].round == 3?'Final':'Finished'%></td>
                         <td class="text-center col-1"><%=TournamentList[count].status%></td>
                         <td class="text-center col-1"><a href="/tournamentList/details/<%=TournamentList[count].round%>/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Details</a></td>
                    

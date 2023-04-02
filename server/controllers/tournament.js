@@ -135,6 +135,7 @@ module.exports.processEditPage = (req, res, next) => {
         }
     });
 }
+
 module.exports.processPlayerPromo = (req, res, next) => {
     let id = req.params.id;
     let playerID = req.params.pid;
@@ -225,18 +226,28 @@ module.exports.displayDetailsPage = (req, res, next) => {
             }
             
             Player.find(query).sort({position:1}).exec((err, players) => {
+                
                 if (err) {
                     console.log(err);
                     res.end(err);
                 }   
                 else {
-                    
-                    res.render('tournament/details', 
-                        { title: 'Tournament Details', 
-                        tournament: tournamentToEdit, 
-                        displayName:req.user?req.user.displayName:'',
-                        players: players
-                     });
+                    Player.find({tournamentID: id}).sort({position:1}).exec((err, allPlayers) => {
+                        if (err) {
+                            console.log(err);
+                            res.end(err);
+                        }else{
+                            
+                            res.render('tournament/details', 
+                            { title: 'Tournament Details', 
+                            tournament: tournamentToEdit, 
+                            displayName:req.user?req.user.displayName:'',
+                            players: players,
+                            allPlayers: allPlayers
+                         });
+                        }
+                    });
+
                 }
             })
         }

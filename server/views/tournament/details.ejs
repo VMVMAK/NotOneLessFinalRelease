@@ -48,9 +48,62 @@
         <% } %>        
         
         <br><a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>Back</a>
-           </div>
         </div>
     </div>
+    <br><br>
+    <div class="TournamentTree">
+        <div class="TournamentTreeRow">
+            <%let finalWinner=false;
+            for(let i=0; i<allPlayers.length; i++) {
+                if(allPlayers[i].round3Winner && allPlayers[i].round2Winner && allPlayers[i].round1Winner){
+                    finalWinner=true;%>
+                <div class="TournamentTreeCellCol1"><%=allPlayers[i].playername%></div>
+
+            <%}
+            }
+            if (!(finalWinner)){%>
+                <div class="TournamentTreeCellCol1">[Match Winner]</div>
+            <%}
+            %>
+        </div>
+        <div class="TournamentTreeRow">
+            <%for(let i=0; i<allPlayers.length; i+=4) {
+                if(allPlayers[i].round2Winner||allPlayers[i+1].round2Winner||allPlayers[i+2].round2Winner||allPlayers[i+3].round2Winner){
+                    if(allPlayers[i].round2Winner){%>
+                <div class="TournamentTreeCellCol2"><%=allPlayers[i].playername%></div>
+            <%      }else if (allPlayers[i+1].round2Winner){%>
+                <div class="TournamentTreeCellCol2"><%=allPlayers[i+1].playername%></div>
+                    <%}else if (allPlayers[i+2].round2Winner){%>
+                <div class="TournamentTreeCellCol2"><%=allPlayers[i+2].playername%></div>
+                    <%}else if (allPlayers[i+3].round2Winner){%>
+                <div class="TournamentTreeCellCol2"><%=allPlayers[i+3].playername%></div>
+                    <%}
+                }else{%>
+                <div class="TournamentTreeCellCol2">[Match Winner]</div>
+            <%  }
+            }%> 
+
+        </div>
+        <div class="TournamentTreeRow">
+            <%for(let i=0; i<allPlayers.length; i+=2) {
+                if(allPlayers[i].round1Winner||allPlayers[i+1].round1Winner){
+                    if(allPlayers[i].round1Winner){%>
+                <div class="TournamentTreeCellCol4"><%=allPlayers[i].playername%></div>
+            <%      }else{%>
+                <div class="TournamentTreeCellCol4"><%=allPlayers[i+1].playername%></div>
+                    <%}
+                }else{%>
+                <div class="TournamentTreeCellCol4">[Match Winner]</div>
+            <%  }
+            }%>            
+        </div>
+        <div class="TournamentTreeRow">
+            <%for(let i=0; i<allPlayers.length; i++) {%>
+                <div class="TournamentTreeCellCol8"><%=allPlayers[i].playername%></div>
+            <%}%>
+        </div>
+    </div>
+</div>
 
 
 

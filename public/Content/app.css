@@ -6,3 +6,29 @@ Project: COMP229 SEC003 W2023 GROUP4
 */
 /**********************/
 /*Custom css goes here*/
+.TournamentTree{
+    text-align:center;
+}
+.TournamentTreeRow{
+    padding: 15px 2px 15px 2px;
+}
+.TournamentTreeCellCol8{
+    background-color: beige;
+    width:12.5%; 
+    float:left;
+}
+.TournamentTreeCellCol4{
+    background-color: beige;
+    width:25%; 
+    float:left;
+}
+.TournamentTreeCellCol2{
+    background-color: beige;
+    width:50%; 
+    float:left;
+}
+.TournamentTreeCellCol1{
+    background-color: beige;
+    width:100%; 
+    float:left;
+}

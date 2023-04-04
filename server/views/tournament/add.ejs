@@ -1,107 +1,88 @@
 <%-include ../partials/header.ejs%>
 <%-include ../partials/main_nav.ejs%>
 <!--Content for the Add Page-->
+
 <div class="container">
-    <div class="row">
-        <div class="offset-md-3 col-md-6">
-        
-        <h1><%=title%></h1>
-            <form class="form" method="POST">
-                <div class="form group">
-                    <label for="nameTextField">Tournament Name</label>
-                    <input type="text" class="form control"
-                    id="nameTextField"
-                    placeholder = "Enter the Tournament Name"
-                    name="name" required>
-                </div>                    
+    <main>
+      <div class="py-5 text-left">
+        <h2>Add a new tournament</h2>
+        <hr class="my-6">
+      </div>
 
-                    <div class="form group">
-                    <label for="descriptionTextArea">Description</label>
-                    <textarea type="text" class="form control"
-                    id="descriptionTextArea"
-                    placeholder = "Enter a brief description of the tournament"
-                    name="description" required></textarea>
-                    </div>
-                    <div class="form group">                    
-                        <label for="nameTextField">Tournament Status</label>
-                        <select name="status" id="status">
-                            <option value="active" >active</option>
-                            <option value="inactive" >inactive</option>
-                        </select>                    
-                    </div>
-                    <div class="form group">
-                        
-                        <input type="hidden" class="form control"
-                        id="userID"                        
-                        name="userID" value="<%=user[0]._id%>" required>
-                    </div>
+      <div class="row g-5">
+        <div class="col-md-7 col-lg-8">
+            <div class="col-md-7">
+            <form method="POST" class="needs-validation" novalidate>
+                <div class="row g-3">
+                <div class="col-12">
+                    <label for="nameTextField" class="form-label">Tournament Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Tournament Name" name="name" required>
+                </div>      
 
-                    <div class="form group">
-                        <label for="nameTextField">Player1:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player1 Name"
-                        name="player1" required>
-                    </div> 
-                    <div class="form group">
-                        <label for="nameTextField">Player2:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player2 Name"
-                        name="player2" required>
-                    </div>
-                    <div class="form group">
-                        <label for="nameTextField">Player3:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player3 Name"
-                        name="player3" required>
-                    </div>
-                    <div class="form group">
-                        <label for="nameTextField">Player4:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player4 Name"
-                        name="player4" required>
-                    </div>
-                    <div class="form group">
-                        <label for="nameTextField">Player5:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player5 Name"
-                        name="player5" required>
-                    </div>
-                    <div class="form group">
-                        <label for="nameTextField">Player6:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player6 Name"
-                        name="player6" required>
-                    </div>
-                    <div class="form group">
-                        <label for="nameTextField">Player7:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player7 Name"
-                        name="player7" required>
-                    </div>
-                    <div class="form group">
-                        <label for="nameTextField">Player8:</label>
-                        <input type="text" class="form control"
-                        id="nameTextField"
-                        placeholder = "Enter the Player8 Name"
-                        name="player8" required>
-                    </div>
-                    
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i>submit</button>
-                    <a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>cancel</a>
+                <div class="col-12">
+                    <label for="descriptionTextArea" class="form-label">Tournament Description</label>
+                    <textarea type="text" class="form-control" id="descriptionTextArea" placeholder="Description" name="description" required></textarea>
+                </div>
 
-                    
+                <div class="col-12">
+                    <label for="status" class="form-label">Tournament Status</label>
+                    <select class="form-select" name="status" id="status" required>
+                    <option value="">Choose...</option>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 1's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player1 Name" name="player1" required >
+                </div>
 
-                </form>
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 2's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player2 Name" name="player2" required >
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 3's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player3 Name" name="player3" required >
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 4's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player4 Name" name="player4" required >
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 5's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player5 Name" name="player5" required >
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 6's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player6 Name" name="player6" required >
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 7's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player7 Name" name="player7" required >
+                </div>
+
+                <div class="col-sm-6">
+                    <label for="nameTextField" class="form-label">Player 8's Name</label>
+                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player8 Name" name="player8" required >
+                </div>
+    
+                <button class="w-100 btn btn-primary btn-md" type="submit">Submit</button>
+                <a href="/tournamentList" class="w-100 btn  btn-warning btn-md">Cancel</button></a>
+            </form>
+            </div>
         </div>
-        </div>
-    </div>
+      </div>
+    </main>
+</div>
+<br>
+<br>
 
 
  <%-include ../partials/bottom_nav.ejs%>

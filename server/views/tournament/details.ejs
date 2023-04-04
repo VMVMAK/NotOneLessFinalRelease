@@ -47,7 +47,8 @@
             <br><br><%if ((tournament.round==1 && numOfWinner==4) || (tournament.round==2 && numOfWinner==2) || (tournament.round==3 && numOfWinner==1)){%><a href="/tournamentList/details/<%=(tournament.round+1)%>/<%=tournament._id%>" class="btn btn-primary">Next Round<i class="fas fa-chevron-right"></i><%}%></a>
         <% } %>        
         
-        <br><a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>Back</a>
+        <br><a href="/home" class="btn btn-primary"><i class="fas fa-undo"></i>Back to Home</a>
+        <br><br><a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>Back to My Tournament</a>
         </div>
     </div>
     <br><br>

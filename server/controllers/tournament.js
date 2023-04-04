@@ -18,10 +18,10 @@ module.exports.displayTournamentList = (req, res, next) => {
             if (req.user!=undefined){
                 User.find({ displayName: req.user.displayName }).exec((err, user) => {
                     if (err) return handleError(err);                     
-                    res.render('tournament/list', { title: 'Tournaments', TournamentList: tournamentList, user: user, displayName:req.user?req.user.displayName:'' });
+                    res.render('tournament/list', { title: 'My Tournaments', TournamentList: tournamentList, user: user, displayName:req.user?req.user.displayName:'' });
                 });
             }else{
-                res.render('tournament/list', { title: 'Tournaments', TournamentList: tournamentList, displayName:req.user?req.user.displayName:'' });
+                res.render('tournament/list', { title: 'My Tournaments', TournamentList: tournamentList, displayName:req.user?req.user.displayName:'' });
             }
         }
     });

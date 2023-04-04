@@ -3,27 +3,26 @@ let router = express.Router();
 let mongoose = require('mongoose');
 let passport = require('passport');
 /*create the userModel instance*/
-
+let Tournament = require('../models/tournament');
 let UserModel = require('../models/user');
 let User = UserModel.User;
 
 module.exports.displayHomePage = (req, res, next) => {
-    res.render('index', { title: 'Home',displayName:req.user?req.user.displayName:'' });
-}
-module.exports.displayAboutPage = (req, res, next) => {
-    res.render('index', { title: 'About' ,displayName:req.user?req.user.displayName:''});
-}
-
-module.exports.displayProductsPage = (req, res, next) => {
-    res.render('index', { title: 'Products', displayName:req.user?req.user.displayName:'' });
-}
-
-module.exports.displayServicesPage = (req, res, next) => {
-    res.render('index', { title: 'Services',displayName:req.user?req.user.displayName:'' });
-}
-
-module.exports.displayContactPage = (req, res, next) => {
-    res.render('index', { title: 'Contact',displayName:req.user?req.user.displayName:'' });
+    Tournament.find((err, tournamentList) => {
+        if (err) {
+            return console.error(err);
+        }
+        else {
+            if (req.user!=undefined){
+                User.find({ displayName: req.user.displayName }).exec((err, user) => {
+                    if (err) return handleError(err);                     
+                    res.render('index', { title: 'Home',TournamentList: tournamentList, user: user, displayName:req.user?req.user.displayName:'' });
+                });
+            }else{
+                res.render('index', { title: 'Home',TournamentList: tournamentList, displayName:req.user?req.user.displayName:'' });
+            }
+        }
+    });
 }
 
 module.exports.displayLoginPage = (req, res, next) => {

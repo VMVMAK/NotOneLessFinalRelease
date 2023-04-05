@@ -1,19 +1,19 @@
 <%-include partials/header.ejs%>
 <%-include partials/main_nav.ejs%>
 
-<main > 
+<main style="background-image: url('/Assets/images/boxbg.jpg'); background-repeat: no-repeat;  background-attachment: fixed; background-size: cover; opacity: 0.9;"> 
   <section class="py-5 text-center container">
     <div class="row py-lg-5">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <img src = "/Assets/images/logo.jpg">
-        <h1 class="fw-light">Not One Less Tournament</h1>
-        <p class="lead text-muted">Welcome to the Not One Less Tournament page. In this page you can view the active tournament.</p>
-        <p class="lead text-muted">After logging in you can create your own tournament of 8 players.</p>
+      <div class="col-lg-6 col-md-8 mx-auto" >
+        <img src = "/Assets/images/logo.jpg" style="border-radius: 30px;">
+        <h1 class="fw-light" style="color:beige; margin-top: 20px; margin-bottom: 20px;">Not One Less Tournament</h1>
+        <p class="lead" style="color:beige; font-weight:400">Welcome to the Not One Less Tournament page. In this page you can view the active tournament.</p>
+        <p class="lead" style="color:beige; font-weight:400">After logging in you can create your own tournament of 8 players.</p>
       </div>
     </div>
   </section>
 
-  <div class="album py-5 bg-light">
+  <div class="album py-5 bg-light" style="background-image: url('/Assets/images/boxbg.jpg'); background-repeat: no-repeat;  background-attachment: fixed; background-size: cover; opacity: 0.9;">
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -21,9 +21,9 @@
           <% if (TournamentList[count].status=='active') {%>
             <div class="col">
               <div class="card shadow-sm">
-                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" text-anchor="middle" fill="#eceeef" dy=".3em"><%=TournamentList[count].name%></text></svg>
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><image width="100%" height="100%" xlink:href="/Assets/images/trophy.jpg" preserveAspectRatio="xMinYMin slice" /><text x="50%" y="50%" text-anchor="middle" fill="#eceeef" font-weight="bold" dy=".3em"><%=TournamentList[count].name%></text></svg>
                 <div class="card-body">
-                  <p class="card-text"><%=TournamentList[count].description%></p>
+                  <p class="card-text" style="color:black"><%=TournamentList[count].description%></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <a href="/tournamentList/details/<%=TournamentList[count].round%>/<%=TournamentList[count]._id%>"><button type="button" class="btn btn-sm btn-outline-secondary">View Details</button></a>

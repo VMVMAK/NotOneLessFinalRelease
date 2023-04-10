@@ -210,6 +210,7 @@ module.exports.performDelete = (req, res, next) => {
 }
 
 module.exports.displayDetailsPage = (req, res, next) => {
+    let user = req.user;
     let id = req.params.id;
     let round = req.params.round;
     Tournament.findById(id, (err, tournamentToEdit) => {
@@ -243,7 +244,8 @@ module.exports.displayDetailsPage = (req, res, next) => {
                             tournament: tournamentToEdit, 
                             displayName:req.user?req.user.displayName:'',
                             players: players,
-                            allPlayers: allPlayers
+                            allPlayers: allPlayers,
+                            user:user
                          });
                         }
                     });

@@ -34,7 +34,7 @@
                                 isFinishMatch = true;
                             }else{isFinishMatch = false;}
                         }%>
-                        <%if (!(isFinishMatch) && typeof displayName =='string'&&displayName){%>
+                        <%if (!(isFinishMatch) && tournament.userID == user._id){%>
                         <a href="/tournamentList/details/Promo/<%=tournament.round%>/<%=tournament._id%>/<%=players[i].id%>" class="btn btn-primary">Promote</a>
                         <%}%>
                     <%}%>

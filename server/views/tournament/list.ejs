@@ -6,15 +6,14 @@
   <div class="row">
     <div class="offset-md-1 col-md-10">
         <h1><%=title %> </h1>
-          <%//if(typeof displayName =='string'&&displayName){%>
+          <%if(typeof displayName =='string'&&displayName){%>
         <a href="/tournamentList/add" class="btn btn-primary" role="button"><i class="fas fa-plus-circle"></i>Add a Tournament</a>
-        <%//}%>
+        <%}%>
         <br>
-        Currently both active and inactive tournaments are displayed as authentication is not ready. 
         <table class="table table-bordered table-striped table-hover">
             <!--Header Row-->
             <tr>
-              <%//if(typeof displayName =='string'&&displayName){%>
+              <%if(typeof displayName =='string'&&displayName){%>
                 <th class="text-center col-2">Name</th>
                 <th class="col-6">Description</th>
                 <th class="text-center col-1">Round</th>
@@ -22,17 +21,10 @@
                 <th class="text-center col-1">Details</th>
                 <th class="text-center col-1">Edit</th>
                 <th class="text-center col-1">Delete</th>
-                <%//}else{%>
-                <!--  <th class="text-center col-2">Name</th>
-                  <th class="col-6">Description</th>                  
-                  <th class="text-center col-1">Details</th>
-                -->
-                <%//}%>
                 </tr>
                <%for(let count = 0; count < TournamentList.length; count ++){%>
                     <tr>
-                        <%//if(typeof displayName =='string'&&displayName){
-                          //if (TournamentList[count].userID == user[0]._id) {%>
+                      <%if (TournamentList[count].userID == user[0]._id) {%>
                         <td class="text-center col-2"><%=TournamentList[count].name%></td>
                         <td class="col-6"><%=TournamentList[count].description%></td>
                         <td class="text-center col-1"><%=TournamentList[count].round == 1?'Quarter final':TournamentList[count].round == 2?'Semi-final':TournamentList[count].round == 3?'Final':'Finished'%></td>
@@ -41,17 +33,11 @@
                    
                         <td class="text-center col-1"><a href="/tournamentList/edit/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i>Edit</a></td>
                         <td class="text-center col-1"><a href="/tournamentList/delete/<%=TournamentList[count]._id%>" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a></td>
-                        <%//}}else{
-                          //if(TournamentList[count].status=='active'){
-                          //%>
-                          <!--<td class="text-center col-2"><%=TournamentList[count].name%></td>
-                          <td class="col-6"><%=TournamentList[count].description%></td>
-                          <td class="text-center col-1"><a href="/tournamentList/details/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Details</a></td>
-                          -->
-                          <%//}%>
-                        <%//}%>  
-                      </tr>
-                        <%}%>
+                      <%}%>
+                    </tr>
+                <%}} else {%>
+                  Please log in.
+                <%}%>
             </table>
         </div>
     </div>

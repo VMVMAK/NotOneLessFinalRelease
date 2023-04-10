@@ -16,7 +16,7 @@ module.exports.displayTournamentList = (req, res, next) => {
         }
         else {
             if (req.user!=undefined){
-                User.find({ displayName: req.user.displayName }).exec((err, user) => {
+                User.find({ _id: req.user._id }).exec((err, user) => {
                     if (err) return handleError(err);                     
                     res.render('tournament/list', { title: 'My Tournaments', TournamentList: tournamentList, user: user, displayName:req.user?req.user.displayName:'' });
                 });
@@ -28,20 +28,20 @@ module.exports.displayTournamentList = (req, res, next) => {
 }
 module.exports.displayAddPage = (req, res, next) => {
 
-    //User.find({ displayName: req.user.displayName }).exec((err, user) => {
-    //    if (err) return handleError(err);       
-    //    res.render('tournament/add', {title:'Add Tournament', user: user, displayName:req.user?req.user.displayName:''})
+    User.find({ _id: req.user._id}).exec((err, user) => {
+        if (err) return handleError(err);       
+        res.render('tournament/add', {title:'Add Tournament', user: user, displayName:req.user?req.user.displayName:''})
 
-    //});
-    User.find().exec((err, user) => {
-        res.render('tournament/add', {title:'Add Tournament', user: user})
-    })
+    });
+    //User.find().exec((err, user) => {
+    //    res.render('tournament/add', {title:'Add Tournament', user: user})
+    //})
 }
 
 module.exports.processAddPage = (req, res, next) => {
     let newTournament = Tournament({
         "name": req.body.name,
-        "userID": req.body.userID,        
+        "userID": req.user._id,        
         "description": req.body.description,
         "status": req.body.status,
         "round" : 1

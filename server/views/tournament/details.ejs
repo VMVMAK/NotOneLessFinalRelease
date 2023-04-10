@@ -34,7 +34,7 @@
                                 isFinishMatch = true;
                             }else{isFinishMatch = false;}
                         }%>
-                        <%if (!(isFinishMatch)){%>
+                        <%if (!(isFinishMatch) && typeof displayName =='string'&&displayName){%>
                         <a href="/tournamentList/details/Promo/<%=tournament.round%>/<%=tournament._id%>/<%=players[i].id%>" class="btn btn-primary">Promote</a>
                         <%}%>
                     <%}%>
@@ -48,7 +48,9 @@
         <% } %>        
         
         <br><a href="/home" class="btn btn-primary"><i class="fas fa-undo"></i>Back to Home</a>
+        <%if(typeof displayName =='string'&&displayName){%>
         <br><br><a href="/tournamentList" class="btn btn-warning"><i class="fas fa-undo"></i>Back to My Tournament</a>
+        <%}%>
         </div>
     </div>
     <br><br>

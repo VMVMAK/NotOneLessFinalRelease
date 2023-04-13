@@ -1,89 +1,88 @@
 <%-include ../partials/header.ejs%>
 <%-include ../partials/main_nav.ejs%>
 
+<div class="mainContainer">
+    <div class="container">
+        <main>
+        <div class="py-5 text-left">
+            <h2 class="fw-light"><span class="PageTitle">Edit <%=tournament.name%></span></h2>
+            <hr class="my-6">
+        </div>
 
-<div class="container">
-    <main>
-      <div class="py-5 text-left">
-        <h2>Edit <%=tournament.name%></h2>
-        <hr class="my-6">
-      </div>
+        <div class="row g-5" style="color:beige;">
+            <div class="col-md-7 col-lg-8">
+                <div class="col-md-7">
+                <form method="POST" class="needs-validation">
+                    <div class="row g-3">
+                    <div class="col-12">
+                        <label for="nameTextField" class="form-label">Tournament Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Tournament Name" name="name" value="<%=tournament.name%>" required>
+                    </div>
+                    
+                    <div class="col-12">
+                        <label for="descriptionTextArea" class="form-label">Tournament Description</label>
+                        <textarea type="text" class="form-control" id="descriptionTextArea" placeholder="Description" name="description" required><%=tournament.description%></textarea>
+                    </div>
 
-      <div class="row g-5">
-        <div class="col-md-7 col-lg-8">
-            <div class="col-md-7">
-            <form method="POST" class="needs-validation">
-                <div class="row g-3">
-                <div class="col-12">
-                    <label for="nameTextField" class="form-label">Tournament Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Tournament Name" name="name" value="<%=tournament.name%>" required>
-                </div>
-                
-                <div class="col-12">
-                    <label for="descriptionTextArea" class="form-label">Tournament Description</label>
-                    <textarea type="text" class="form-control" id="descriptionTextArea" placeholder="Description" name="description" required><%=tournament.description%></textarea>
-                </div>
+                    <div class="col-12">
+                        <label for="status" class="form-label">Tournament Status</label>
+                        <select class="form-select" name="status" id="status" required>
+                        <option value="">Choose...</option>
+                            <option value="active" <%= tournament.status == 'active' ? 'selected' : ''%>>Active</option>
+                            <option value="inactive" <%= tournament.status == 'inactive' ? 'selected' : ''%>>Inactive</option>
+                        </select>
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 1's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player1 Name" name="player1" value = "<%=playernames[0]%>" required >
+                    </div>
 
-                <div class="col-12">
-                    <label for="status" class="form-label">Tournament Status</label>
-                    <select class="form-select" name="status" id="status" required>
-                    <option value="">Choose...</option>
-                        <option value="active" <%= tournament.status == 'active' ? 'selected' : ''%>>Active</option>
-                        <option value="inactive" <%= tournament.status == 'inactive' ? 'selected' : ''%>>Inactive</option>
-                    </select>
-                </div>
-                
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 1's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player1 Name" name="player1" value = "<%=playernames[0]%>" required >
-                </div>
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 2's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player2 Name" name="player2" value = "<%=playernames[1]%>" required >
+                    </div>
 
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 2's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player2 Name" name="player2" value = "<%=playernames[1]%>" required >
-                </div>
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 3's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player3 Name" name="player3" value = "<%=playernames[2]%>" required >
+                    </div>
 
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 3's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player3 Name" name="player3" value = "<%=playernames[2]%>" required >
-                </div>
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 4's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player4 Name" name="player4" value = "<%=playernames[3]%>" required >
+                    </div>
 
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 4's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player4 Name" name="player4" value = "<%=playernames[3]%>" required >
-                </div>
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 5's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player5 Name" name="player5" value = "<%=playernames[4]%>" required >
+                    </div>
 
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 5's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player5 Name" name="player5" value = "<%=playernames[4]%>" required >
-                </div>
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 6's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player6 Name" name="player6" value = "<%=playernames[5]%>" required >
+                    </div>
 
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 6's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player6 Name" name="player6" value = "<%=playernames[5]%>" required >
-                </div>
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 7's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player7 Name" name="player7" value = "<%=playernames[6]%>" required >
+                    </div>
 
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 7's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player7 Name" name="player7" value = "<%=playernames[6]%>" required >
+                    <div class="col-sm-6">
+                        <label for="nameTextField" class="form-label">Player 8's Name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player8 Name" name="player8" value = "<%=playernames[7]%>" required >
+                    </div>
+        
+                    <button class="w-100 btn btn-primary btn-md" type="submit">Submit</button>
+                    <a href="/tournamentList" class="w-100 btn  btn-warning btn-md">Cancel</button></a>
+                </form>
                 </div>
-
-                <div class="col-sm-6">
-                    <label for="nameTextField" class="form-label">Player 8's Name</label>
-                    <input type="text" class="form-control" id="nameTextField" placeholder="Enter the Player8 Name" name="player8" value = "<%=playernames[7]%>" required >
-                </div>
-    
-                <button class="w-100 btn btn-primary btn-md" type="submit">Submit</button>
-                <a href="/tournamentList" class="w-100 btn  btn-warning btn-md">Cancel</button></a>
-            </form>
             </div>
         </div>
-      </div>
-    </main>
+        </main>
+    </div>
 </div>
 
-<br>
-<br>
 
  <%-include ../partials/bottom_nav.ejs%>
  <%-include ../partials/footer.ejs%>

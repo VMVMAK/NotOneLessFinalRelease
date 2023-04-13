@@ -6,29 +6,85 @@ Project: COMP229 SEC003 W2023 GROUP4
 */
 /**********************/
 /*Custom css goes here*/
+.mainContainer{
+    /*height: calc(100vh - 76px);*/
+    height: calc(100vh );
+    width: 100%;    
+    background-image: url('/Assets/images/boxbg.jpg'); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.9;
+    
+}
+.PageTitle{
+    color:beige; 
+    margin-top: 40px; 
+    margin-bottom: 40px;
+}
+.PageDescription{
+    color:beige; font-weight:400;
+}
+.Text1{
+    color: beige;
+}
+hr {
+    color: beige;
+}
+ul {
+    line-height: 40px;
+  }
+tr, td {
+    /*padding: 15px;
+    text-align: left; */
+    color:beige;
+}
+.TournamentDetailsDescription{
+    color:beige;
+    font-size: 18px;
+}
+.TournamentStatusTitle{
+    color:beige;    
+}
+.TournamentPlayerText{
+    color:beige;    
+}
 .TournamentTree{
     text-align:center;
 }
 .TournamentTreeRow{
-    padding: 15px 2px 15px 2px;
+    display: flex;
+    padding: 0px 2px 0px 2px;
 }
 .TournamentTreeCellCol8{
-    background-color: beige;
+    display: grid;
+    padding: 0px 5px;
     width:12.5%; 
     float:left;
 }
 .TournamentTreeCellCol4{
-    background-color: beige;
+    padding: 5px 5px;
     width:25%; 
     float:left;
 }
 .TournamentTreeCellCol2{
-    background-color: beige;
+    padding: 5px 5px;
     width:50%; 
     float:left;
 }
-.TournamentTreeCellCol1{
-    background-color: beige;
+.TournamentTreeCellCol1{    
+    /*opacity: 0.8;*/
+    padding: 0px 5px 5px 5px;
     width:100%; 
     float:left;
 }
+.TournamentCard{    
+    border-radius: 5px;
+    border-style: solid;
+    border-width: 2px; 
+    width: 146px;
+    margin: auto;
+    background-color: beige;
+   
+}
+ 

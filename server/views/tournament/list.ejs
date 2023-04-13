@@ -1,19 +1,20 @@
 <%-include ../partials/header.ejs%>
 <%-include ../partials/main_nav.ejs%>
   <!--Main Nav Navigation-->
-  
+<div class="mainContainer">
 <main class="container">
   <div class="row">
     <div class="offset-md-1 col-md-10">
-        <h1><%=title %> </h1>
-          <%if(typeof displayName =='string'&&displayName){%>
-        <a href="/tournamentList/add" class="btn btn-primary" role="button"><i class="fas fa-plus-circle"></i>Add a Tournament</a>
+        <h1 class="fw-light"><span class="PageTitle"><%=title %></span></h1>
+        <%if(typeof displayName =='string'&&displayName){%>
+            <br><a href="/tournamentList/add" class="btn btn-secondary" role="button">Add a Tournament</a>
         <%}%>
         <br>
-        <table class="table table-bordered table-striped table-hover">
+        <%if(typeof displayName =='string'&&displayName){%>
+        <br>
+        <table class="table table-bordered">
             <!--Header Row-->
             <tr>
-              <%if(typeof displayName =='string'&&displayName){%>
                 <th class="text-center col-2">Name</th>
                 <th class="col-6">Description</th>
                 <th class="text-center col-1">Round</th>
@@ -29,24 +30,22 @@
                         <td class="col-6"><%=TournamentList[count].description%></td>
                         <td class="text-center col-1"><%=TournamentList[count].round == 1?'Quarter final':TournamentList[count].round == 2?'Semi-final':TournamentList[count].round == 3?'Final':'Finished'%></td>
                         <td class="text-center col-1"><%=TournamentList[count].status%></td>
-                        <td class="text-center col-1"><a href="/tournamentList/details/<%=TournamentList[count].round%>/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fa-solid fa-magnifying-glass"></i>Details</a></td>
+                        <td class="text-center col-1"><a href="/tournamentList/details/<%=TournamentList[count].round%>/<%=TournamentList[count]._id%>" class="btn btn-secondary">Details</a></td>
                    
-                        <td class="text-center col-1"><a href="/tournamentList/edit/<%=TournamentList[count]._id%>" class="btn btn-primary"><i class="fas fa-pencil-alt"></i>Edit</a></td>
-                        <td class="text-center col-1"><a href="/tournamentList/delete/<%=TournamentList[count]._id%>" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Delete</a></td>
+                        <td class="text-center col-1"><a href="/tournamentList/edit/<%=TournamentList[count]._id%>" class="btn btn-secondary">Edit</a></td>
+                        <td class="text-center col-1"><a href="/tournamentList/delete/<%=TournamentList[count]._id%>" class="btn btn-danger">Delete</a></td>
                       <%}%>
                     </tr>
-                <%}} else {%>
-                  Please log in.
-                <%}%>
+                <%}%> 
             </table>
+            <%} else {%>
+              <span class="PageDescription">Please log in.</span>
+            <%}%>
         </div>
     </div>
   </main>
-  
-   <!--<h1><%= title %></h1>-->
-   <!--<p>Welcome to <%= title %></p>-->
-   <!--Script section-->
-  
+</div>  
+
 <%-include ../partials/bottom_nav.ejs%>
  <%-include ../partials/footer.ejs%>
 

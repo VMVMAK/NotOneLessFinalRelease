@@ -8,7 +8,7 @@ Project: COMP229 SEC003 W2023 GROUP4
 /*Custom css goes here*/
 .mainContainer{
     /*height: calc(100vh - 76px);*/
-    height: calc(100vh );
+    height: calc(150vh );
     width: 100%;    
     background-image: url('/Assets/images/boxbg.jpg'); 
     background-repeat: no-repeat;
@@ -87,4 +87,15 @@ tr, td {
     background-color: beige;
    
 }
- 
+
+.center {
+    border: 5px solid;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+.listtable {
+    text-align: center;
+    margin-top: 40px;
+}
+  

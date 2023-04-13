@@ -4,7 +4,7 @@
 <div class="mainContainer">
     <div class="container">
         <div class="row">
-            <div class="offset-md-7 col-md-5">
+            <div class="center">
             <h1 class="fw-light"><span class="PageTitle"><%=title%></span></h1>
             <span class="TournamentDetailsDescription">
             Tournament name:&emsp;<%=tournament.name%>
@@ -28,7 +28,7 @@
                     <ul class="TournamentPlayerText">
                     <% let isFinishMatch;                
                         for(let i=0; i<players.length; i++) { %>
-                        <li>Position <%= i+1 %>:&emsp;<%= players[i].playername %>&emsp;
+                        Position <%= i+1 %>:&emsp;<%= players[i].playername %>&emsp;
                         <%if (players[i][roundWinner]) {numOfWinner++;%>WON<%}%>
                         <% if (tournament.round != 4) {%>
                             <% if (i%2 == 0){                        
@@ -42,7 +42,7 @@
                             <a href="/tournamentList/details/Promo/<%=tournament.round%>/<%=tournament._id%>/<%=players[i].id%>" class="btn btn-sm btn-secondary">Promote</a>
                             <%}}%>
                         <%}%>
-                        </li>
+                        <br>
                     <% } %>
                     </ul>
                 <% } else { %>

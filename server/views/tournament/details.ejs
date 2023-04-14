@@ -50,11 +50,10 @@
                 <% } %>
                 <br><%if ((tournament.round==1 && numOfWinner==4) || (tournament.round==2 && numOfWinner==2) || (tournament.round==3 && numOfWinner==1)){%><a href="/tournamentList/details/<%=(tournament.round+1)%>/<%=tournament._id%>" class="btn btn-primary">Next Round<i class="fas fa-chevron-right"></i><%}%></a>
             <% } %>
-            <a href="/home" class="btn btn btn-secondary">Back to Home</a>
+            <a href="/home" class="btn btn btn-secondary" style = "margin-bottom: 20px;">Back to Home</a>
             <%if(typeof displayName =='string'&&displayName){%>
-                &emsp;<a href="/tournamentList" class="btn btn-warning">Back to My Tournament</a>
+                &emsp;<a href="/tournamentList" class="btn btn-warning" style = "margin-bottom: 20px;">Back to My Tournament</a>
             <%}%>
-            <hr>
             </div>
             
         </div>

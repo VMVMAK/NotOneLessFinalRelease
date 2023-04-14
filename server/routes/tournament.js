@@ -15,44 +15,35 @@ function requireAuth(req, res, next)
 //connect to our tournament model
 let Tournament = require('../models/tournament');
 let tournamentController = require('../controllers/tournament');
-//GET ROUTE for the book list page -READ OPERATION
-router.get('/', tournamentController.displayTournamentList);
+//GET ROUTE for the tournament list page -READ OPERATION
+router.get('/', requireAuth, tournamentController.displayTournamentList);
 
 /*GET Route for displaying the Add Page- CREATE Operation*/
 //router.get('/add', requireAuth,tournamentController.displayAddPage);
-router.get('/add', tournamentController.displayAddPage);
+router.get('/add', requireAuth, tournamentController.displayAddPage);
 
 /* POST Route for processing the Add Page - CREATE operation*/
 //router.post('/add',requireAuth,tournamentController.processAddPage );
-router.post('/add',tournamentController.processAddPage);
+router.post('/add', requireAuth, tournamentController.processAddPage);
 
 /*GET Route for displaying the Edit page - UPDATE operation*/
 //router.get('/edit/:id', requireAuth,tournamentController.displayEditPage);
-router.get('/edit/:id', tournamentController.displayEditPage);
+router.get('/edit/:id', requireAuth, tournamentController.displayEditPage);
 
 /*POST Route for processing the Edit page - UPDATE Operation*/
 //router.post('/edit/:id', requireAuth,tournamentController.processEditPage);
-router.post('/edit/:id', tournamentController.processEditPage);
+router.post('/edit/:id', requireAuth, tournamentController.processEditPage);
 
 /*GET to perform Deletion - DELETE Operation */
 //router.get('/delete/:id', requireAuth,tournamentController.performDelete);
-router.get('/delete/:id', tournamentController.performDelete);
+router.get('/delete/:id', requireAuth, tournamentController.performDelete);
 
 /*GET Route for displaying the Details page - UPDATE operation*/
 router.get('/details/:round/:id/', tournamentController.displayDetailsPage);
 
-/*GET Route for displaying the Details page - UPDATE operation*/
-//router.get('/details/2/:id/', tournamentController.displayDetailsPageTwo);
-
-/*GET Route for displaying the Details page - UPDATE operation*/
-//router.get('/details/3/:id/', tournamentController.displayDetailsPageThree);
-
-/*GET Route for displaying the Details page - UPDATE operation*/
-//router.get('/details/4/:id/', tournamentController.displayDetailsFinal);
-
 /*POST Route for processing the Edit page - UPDATE Operation*/
 //router.post('/edit/:id', requireAuth,tournamentController.processEditPage);
-router.get('/details/Promo/:round/:id/:pid', tournamentController.processPlayerPromo);
+router.get('/details/Promo/:round/:id/:pid', requireAuth, tournamentController.processPlayerPromo);
 
 
 module.exports = router;

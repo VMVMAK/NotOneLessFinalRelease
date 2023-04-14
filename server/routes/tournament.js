@@ -16,7 +16,7 @@ function requireAuth(req, res, next)
 let Tournament = require('../models/tournament');
 let tournamentController = require('../controllers/tournament');
 //GET ROUTE for the tournament list page -READ OPERATION
-router.get('/', requireAuth, tournamentController.displayTournamentList);
+router.get('/', tournamentController.displayTournamentList);
 
 /*GET Route for displaying the Add Page- CREATE Operation*/
 //router.get('/add', requireAuth,tournamentController.displayAddPage);
